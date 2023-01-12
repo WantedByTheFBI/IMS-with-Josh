@@ -8,9 +8,11 @@ mysocket.listen()
 print(client, port)
 client.send(b"knock knock knock, I'm the server")
 while True:
-    message = input("What would you like to send? ")
-    client.send(b"{message}")
+    message = input("What would you like to send? ").encode("utf-8")
+    client.send(message)
     data = client.recv(buffer_size)
     print(data.decode())
-    break
+    breakoff = input("would you like to stop sending and receiving messages? (yes or no): ")
+    if breakoff.lower() == "yes":
+        break
 mysocket.close()
