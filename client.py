@@ -14,7 +14,7 @@ host = socket.gethostname()
 s.connect((host, port))
 format = "%(asctime)s: %(message)s"
 logging.basicConfig(format=format, level=logging.INFO, datefmt="%H:%M:%S")
-x = threading.Thread(target=readincomingtext, args=(1,),daemon=True)
+x = threading.Thread(target=readincomingtext, args=("Message",),daemon=True)
 x.start()
 print("What would you like to send?(or enter [close] if you want to stop messaging: ")
 print("\n")
